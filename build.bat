@@ -1,5 +1,4 @@
-cls
-set "EXE_NAME=font_builder_win32"
+set "EXE_NAME=font_builder"
 set "DESTINATION_DIR=..\build\fontbuilder"
 
 IF NOT EXIST ..\build mkdir ..\build

@@ -11,6 +11,9 @@
     #include <limits.h>
 #endif
 
+#include "../GameEngine/log/Debug.h"
+#include "../GameEngine/log/Debug.cpp"
+
 #include "../GameEngine/ui/UITheme.h"
 #include "../GameEngine/utils/StringUtils.h"
 
@@ -50,7 +53,10 @@ void iter_directories_recursive(RingMemory* ring, const char *dir_path) {
                     printf("Found .fonttxt file: %s\n", abs_path);
 
                     fonts[font_index].glyphs = (Glyph *) calloc(1, MEGABYTE);
-                    font_from_file_txt(ring, abs_path, fonts + font_index);
+
+                    FileBody file;
+                    file_read(abs_path, &file, ring);
+                    font_from_file_txt(fonts + font_index, file.content);
 
                     char new_path[MAX_PATH];
                     str_replace(abs_path, ".fonttxt", ".fontbin", new_path);
@@ -99,7 +105,10 @@ void iter_directories_recursive(RingMemory* ring, const char *dir_path) {
                     printf("Found .fonttxt file: %s\n", abs_path);
 
                     fonts[font_index].glyphs = (Glyph *) calloc(1, MEGABYTE);
-                    font_from_file_txt(ring, abs_path, fonts + font_index);
+
+                    FileBody file;
+                    file_read(abs_path, &file, ring);
+                    font_from_file_txt(fonts + font_index, file.content);
 
                     char new_path[MAX_PATH];
                     str_replace(abs_path, ".fonttxt", ".fontbin", new_path);
