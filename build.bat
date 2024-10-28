@@ -1,5 +1,5 @@
 set "EXE_NAME=font_builder"
-set "DESTINATION_DIR=..\build\fontbuilder"
+set "DESTINATION_DIR=..\build\font_builder"
 
 IF NOT EXIST ..\build mkdir ..\build
 IF NOT EXIST "%DESTINATION_DIR%" mkdir "%DESTINATION_DIR%"
